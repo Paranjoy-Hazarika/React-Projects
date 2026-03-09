@@ -74,15 +74,15 @@ export default function EnrollmentDashboard() {
 
       <div className="header-row">
 
-        <button onClick={() => setShowModal(true)}>
-          Add Student
-        </button>
-
         <input
           placeholder="Filter by course"
           value={filterCourse}
           onChange={e => setFilterCourse(e.target.value)}
         />
+
+        <button onClick={() => setShowModal(true)}>
+          Add Student
+        </button>
 
       </div>
 
