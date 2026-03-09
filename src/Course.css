@@ -27,6 +27,10 @@ h3 {
     font-size: 1.5rem;
 }
 
+button {
+    cursor: pointer;
+}
+
 #root {
     /* background-color: blue; */
     width: 100%;
@@ -75,7 +79,7 @@ h3 {
     position: fixed;
     inset: 0;
     
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.5);
     
     display: flex;
     justify-content: center;
@@ -86,10 +90,7 @@ h3 {
 
 .modal {
     position: relative;
-    border: 2px solid black;
     border-radius: 8px;
-
-    background: white;
 
     min-width: 420px;
     max-width: 500px;
@@ -128,8 +129,6 @@ h3 {
 }
 
 .students-section {
-    /* max-width: 83%;
-    min-width: min-content; */
     flex: 1;
     padding: 0;
 
@@ -152,7 +151,8 @@ h3 {
     gap: 40px;
     padding: 25px;
     margin: 10px;
-    border: 2px solid black;
+    border-radius: 8px;
+    border: 3px solid black;
 }
 
 .student-card {
@@ -163,6 +163,7 @@ h3 {
 
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 5px;
 }
 

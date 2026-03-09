@@ -162,18 +162,20 @@ export default function EnrollmentDashboard() {
             {filteredStudents.map(student => (
               <div key={student.id} className="student-card">
 
-                <h4>{student.name}</h4>
+                <div className="card-content">
+                  <h4>{student.name}</h4>
 
-                <p>ID: {student.id}</p>
-                <p>GPA: {student.gpa}</p>
+                  <p>ID: {student.id}</p>
+                  <p>GPA: {student.gpa}</p>
 
-                <p>Courses:</p>
+                  <p>Courses:</p>
 
-                <ul>
-                  {[...student.enrolledCourses].map((course, i) => (
-                    <li key={i}>{course}</li>
-                  ))}
-                </ul>
+                  <ul>
+                    {[...student.enrolledCourses].map((course, i) => (
+                      <li key={i}>{course}</li>
+                    ))}
+                  </ul>
+                </div>
 
                 <button onClick={() => removeStudent(student.id)}>
                   Remove
