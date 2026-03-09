@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import './Course.css'
 
 export default function EnrollmentDashboard() {
 
-  // State: Map of students
+  const [showModal, setShowModal] = useState(false);
+
   const [students, setStudents] = useState(new Map());
 
   const [filterCourse, setFilterCourse] = useState("");
@@ -14,7 +16,6 @@ export default function EnrollmentDashboard() {
     gpa: ""
   });
 
-  // Add student
   const addStudent = () => {
 
     const courseSet = new Set(
@@ -37,7 +38,6 @@ export default function EnrollmentDashboard() {
     setNewStudent({ id: "", name: "", courses: "", gpa: "" });
   };
 
-  // Remove student
   const removeStudent = (id) => {
 
     const newMap = new Map(students);
@@ -47,15 +47,12 @@ export default function EnrollmentDashboard() {
     setStudents(newMap);
   };
 
-  // Convert Map -> Array
   const studentArray = [...students.values()];
 
-  // Sort by GPA (descending)
   const sortedStudents = [...studentArray].sort(
     (a, b) => b.gpa - a.gpa
   );
 
-  // Unique courses using reduce + Set
   const uniqueCourses = studentArray.reduce((acc, student) => {
 
     student.enrolledCourses.forEach(course => acc.add(course));
@@ -64,7 +61,6 @@ export default function EnrollmentDashboard() {
 
   }, new Set());
 
-  // Filter students by course
   const filteredStudents = filterCourse
     ? sortedStudents.filter(student =>
         student.enrolledCourses.has(filterCourse)
@@ -72,92 +68,137 @@ export default function EnrollmentDashboard() {
     : sortedStudents;
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="dashboard">
 
-      <h2>Course Enrollment Dashboard</h2>
+      <h2 id="main-heading">Course Enrollment Dashboard</h2>
 
-      <h3>Add Student</h3>
+      <div className="header-row">
 
-      <input
-        placeholder="ID"
-        value={newStudent.id}
-        onChange={e =>
-          setNewStudent({ ...newStudent, id: e.target.value })
-        }
-      />
+        <button onClick={() => setShowModal(true)}>
+          Add Student
+        </button>
 
-      <input
-        placeholder="Name"
-        value={newStudent.name}
-        onChange={e =>
-          setNewStudent({ ...newStudent, name: e.target.value })
-        }
-      />
+        <input
+          placeholder="Filter by course"
+          value={filterCourse}
+          onChange={e => setFilterCourse(e.target.value)}
+        />
 
-      <input
-        placeholder="Courses (comma separated)"
-        value={newStudent.courses}
-        onChange={e =>
-          setNewStudent({ ...newStudent, courses: e.target.value })
-        }
-      />
+      </div>
 
-      <input
-        placeholder="GPA"
-        value={newStudent.gpa}
-        onChange={e =>
-          setNewStudent({ ...newStudent, gpa: e.target.value })
-        }
-      />
+      {showModal && (
+        <div className="modal-overlay">
 
-      <button onClick={addStudent}>Add Student</button>
+          <dialog open className="modal">
 
-      <hr />
+            <h3>Add Student</h3>
 
-      <h3>Filter by Course</h3>
+            <div className="inputFields">
 
-      <input
-        placeholder="Course name"
-        value={filterCourse}
-        onChange={e => setFilterCourse(e.target.value)}
-      />
+              <input
+                placeholder="ID"
+                value={newStudent.id}
+                onChange={e =>
+                  setNewStudent({ ...newStudent, id: e.target.value })
+                }
+              />
 
-      <hr />
+              <input
+                placeholder="Name"
+                value={newStudent.name}
+                onChange={e =>
+                  setNewStudent({ ...newStudent, name: e.target.value })
+                }
+              />
 
-      <h3>Unique Courses</h3>
+              <input
+                placeholder="Courses (comma separated)"
+                value={newStudent.courses}
+                onChange={e =>
+                  setNewStudent({ ...newStudent, courses: e.target.value })
+                }
+              />
 
-      <ul>
-        {[...uniqueCourses].map((course, index) => (
-          <li key={index}>{course}</li>
-        ))}
-      </ul>
+              <input
+                placeholder="GPA"
+                value={newStudent.gpa}
+                onChange={e =>
+                  setNewStudent({ ...newStudent, gpa: e.target.value })
+                }
+              />
 
-      <hr />
+              <div className="modal-buttons">
 
-      <h3>Students (Sorted by GPA)</h3>
+                <button
+                  onClick={() => {
+                    addStudent();
+                    setShowModal(false);
+                  }}
+                >
+                  Add Student
+                </button>
 
-      {filteredStudents.map(student => (
-        <div key={student.id} style={{ border: "1px solid gray", margin: "10px", padding: "10px" }}>
-          
-          <h4>{student.name}</h4>
+                <button onClick={() => setShowModal(false)}>
+                  Cancel
+                </button>
 
-          <p>ID: {student.id}</p>
-          <p>GPA: {student.gpa}</p>
+              </div>
 
-          <p>Courses:</p>
+            </div>
+
+          </dialog>
+
+        </div>
+      )}
+
+      <div className="main-content">
+
+        <div className="students-section">
+
+          <h3>Students (Sorted by GPA)</h3>
+
+          <div className="students-grid">
+
+            {filteredStudents.map(student => (
+              <div key={student.id} className="student-card">
+
+                <h4>{student.name}</h4>
+
+                <p>ID: {student.id}</p>
+                <p>GPA: {student.gpa}</p>
+
+                <p>Courses:</p>
+
+                <ul>
+                  {[...student.enrolledCourses].map((course, i) => (
+                    <li key={i}>{course}</li>
+                  ))}
+                </ul>
+
+                <button onClick={() => removeStudent(student.id)}>
+                  Remove
+                </button>
+
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+        <div className="courses-sidebar">
+
+          <h3>Unique Courses</h3>
 
           <ul>
-            {[...student.enrolledCourses].map((course, i) => (
-              <li key={i}>{course}</li>
+            {[...uniqueCourses].map((course, index) => (
+              <li key={index}>{course}</li>
             ))}
           </ul>
 
-          <button onClick={() => removeStudent(student.id)}>
-            Remove
-          </button>
-
         </div>
-      ))}
+
+      </div>
 
     </div>
   );
