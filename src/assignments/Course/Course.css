@@ -31,6 +31,11 @@ button {
     cursor: pointer;
 }
 
+hr {
+    padding: 0;
+    margin: 15px 0;
+}
+
 #root {
     /* background-color: blue; */
     width: 100%;

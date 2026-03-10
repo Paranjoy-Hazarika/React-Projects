@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Course.css'
 
-export default function EnrollmentDashboard() {
+function EnrollmentDashboard() {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -164,6 +164,7 @@ export default function EnrollmentDashboard() {
 
                 <div className="card-content">
                   <h4>{student.name}</h4>
+                  <hr />
 
                   <p>ID: {student.id}</p>
                   <p>GPA: {student.gpa}</p>
@@ -205,3 +206,5 @@ export default function EnrollmentDashboard() {
     </div>
   );
 }
+
+export default EnrollmentDashboard

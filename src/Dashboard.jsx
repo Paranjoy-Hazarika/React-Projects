@@ -1,7 +1,6 @@
-// import { useState } from "react";
 import "./App.css"
 
-function App() {
+function Dashboard() {
   return (
     <div className="container">
       <header>
@@ -41,4 +40,4 @@ function App() {
   )
 }
 
-export default App;
+export default Dashboard
