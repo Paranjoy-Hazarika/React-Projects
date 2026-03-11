@@ -4,7 +4,7 @@ function Dashboard() {
   return (
     <div className="container">
       <header>
-        <img src="../src/assets/coffee-mug.png" />
+        <img src="./assets/coffee-mug.png" />
         <div className="header-content">
           <h1>Paranjoy Hazarika</h1>
           <p>Roll No: CSB24017</p>
