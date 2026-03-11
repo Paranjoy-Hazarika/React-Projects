@@ -1,5 +1,5 @@
-import React from 'react'
 import './App.css'
+import { Link } from 'react-router-dom'
 import mug from './assets/coffee-mug.png'
 
 function Dashboard() {
@@ -22,17 +22,47 @@ function Dashboard() {
           <div className="assignment-grid">
 
             <article className="assignment-card">
-              <h3>Assignment 1</h3>
-              <p>Date: 12/21/12</p>
-              <p>Course Enrollment Dashboard</p>
-              <a href="./assignment1/">Open</a>
+              <div className="card-content">
+                <div className="card-header">
+                  <h3>Assignment 1</h3>
+                  <hr />
+                </div>
+
+                <div className="card-details">
+                  <p>
+                    <span>Date:<br /></span>
+                    12/21/12
+                  </p>
+                  <p>
+                    <span>Topic:<br /></span>
+                    Todo Manager
+                  </p>
+                </div>
+              </div>
+
+              <Link to='/course'>Open</Link>
             </article>
 
             <article className="assignment-card">
-              <h3>Assignment 2</h3>
-              <p>Date: 12/21/12</p>
-              <p>Todo Manager</p>
-              <a href="./assignment2/">Open</a>
+              <div className="card-content">
+                <div className="card-header">
+                  <h3>Assignment 2</h3>
+                  <hr />
+                </div>
+
+                <div className="card-details">
+                  <p>
+                    <span>Date:<br /></span>
+                    12/21/12
+                  </p>
+                  <p>
+                    <span>Topic:<br /></span>
+                    Student Course Manager
+                  </p>
+                </div>
+              </div>
+
+              <Link to='/course'>Open</Link>
             </article>
 
           </div>
