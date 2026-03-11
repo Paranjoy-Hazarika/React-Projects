@@ -1,5 +1,6 @@
-import "./App.css"
-import mug from "./assets/coffee-mug.png"
+import React from 'react'
+import './App.css'
+import mug from './assets/coffee-mug.png'
 
 function Dashboard() {
   return (
