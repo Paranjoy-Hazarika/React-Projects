@@ -16,7 +16,7 @@ body {
 }
 
 ul {
-    padding:0  30px;
+    padding:0  30px !important;
 }
 
 h3 {
@@ -28,7 +28,7 @@ button {
 }
 
 hr {
-    padding: 0;
+    padding: 0 !important;
     margin: 15px 0;
 }
 
@@ -54,7 +54,7 @@ hr {
     
 }
 
-.dashboard > * {
+.dashboard * {
     padding: 10px;
 }
 

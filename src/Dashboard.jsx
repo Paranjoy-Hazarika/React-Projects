@@ -1,5 +1,7 @@
 import './App.css'
 import { Link } from 'react-router-dom'
+
+import assignments from './data/assignments.json'
 import mug from './assets/coffee-mug.png'
 
 function Dashboard() {
@@ -21,49 +23,30 @@ function Dashboard() {
 
           <div className="assignment-grid">
 
-            <article className="assignment-card">
-              <div className="card-content">
-                <div className="card-header">
-                  <h3>Assignment 1</h3>
-                  <hr />
+            {assignments.map((assignment) => (
+              <article key={assignment.id} className="assignment-card">
+
+                <div className="card-content">
+                  <div className="card-header">
+                    <h3>{assignment.title}</h3>
+                    <hr />
+                  </div>
+
+                  <div className="card-details">
+                    <p>
+                      <span>Date:<br /></span>
+                      {assignment.date}
+                    </p>
+                    <p>
+                      <span>Topic:<br /></span>
+                      {assignment.topic}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="card-details">
-                  <p>
-                    <span>Date:<br /></span>
-                    12/21/12
-                  </p>
-                  <p>
-                    <span>Topic:<br /></span>
-                    Todo Manager
-                  </p>
-                </div>
-              </div>
-
-              <Link to='/todo'>Open</Link>
-            </article>
-
-            <article className="assignment-card">
-              <div className="card-content">
-                <div className="card-header">
-                  <h3>Assignment 2</h3>
-                  <hr />
-                </div>
-
-                <div className="card-details">
-                  <p>
-                    <span>Date:<br /></span>
-                    12/21/12
-                  </p>
-                  <p>
-                    <span>Topic:<br /></span>
-                    Student Course Manager
-                  </p>
-                </div>
-              </div>
-
-              <Link to='/course'>Open</Link>
-            </article>
+                <Link to={assignment.route}>Open</Link>
+              </article>
+            ))}
 
           </div>
         </section>
