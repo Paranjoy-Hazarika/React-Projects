@@ -1,10 +1,11 @@
 import "./App.css"
+import mug from "./assets/coffee-mug.png"
 
 function Dashboard() {
   return (
     <div className="container">
       <header>
-        <img src="./assets/coffee-mug.png" />
+        <img src={mug} alt="coffee-mug" />
         <div className="header-content">
           <h1>Paranjoy Hazarika</h1>
           <p>Roll No: CSB24017</p>
