@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 
-.root {
+#root {
   min-height: 100vh;
+  width: 100%;
   padding: 0 !important;
 }
 

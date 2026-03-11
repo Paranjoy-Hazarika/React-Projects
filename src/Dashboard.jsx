@@ -40,7 +40,7 @@ function Dashboard() {
                 </div>
               </div>
 
-              <Link to='/course'>Open</Link>
+              <Link to='/todo'>Open</Link>
             </article>
 
             <article className="assignment-card">

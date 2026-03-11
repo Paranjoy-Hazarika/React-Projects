@@ -120,7 +120,7 @@ function EnrollmentDashboard() {
               />
 
               <input
-                placeholder="GPA"
+                placeholder="CGPA"
                 value={newStudent.gpa}
                 onChange={e =>
                   setNewStudent({ ...newStudent, gpa: e.target.value })
@@ -167,7 +167,7 @@ function EnrollmentDashboard() {
                   <hr />
 
                   <p>ID: {student.id}</p>
-                  <p>GPA: {student.gpa}</p>
+                  <p>CGPA: {student.gpa}</p>
 
                   <p>Courses:</p>
 
