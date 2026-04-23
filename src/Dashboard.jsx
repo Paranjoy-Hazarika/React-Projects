@@ -12,7 +12,7 @@ function Dashboard() {
         <div className="header-content">
           <h1>Paranjoy Hazarika</h1>
           <p>Roll No: CSB24017</p>
-          <p>Course Code: CSBTxyz</p>
+          <p>Course Code: CSBT215</p>
           <p>Course Title: Advance Programming (AP)</p>
         </div>
       </header>
